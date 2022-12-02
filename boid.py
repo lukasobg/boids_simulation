@@ -1,6 +1,7 @@
 import math
+from colors import *
 
-WIDTH, HEIGHT = 1200, 800
+WIDTH, HEIGHT = 1400, 900
 
 def highlight(str):
     print()
@@ -11,12 +12,13 @@ def highlight(str):
 
 class Boid:
 
-    def __init__(self, x, y, dir):
+    def __init__(self, x, y, dir, color=RED):
         self.x = x
         self.y = y
         self.dir = dir
+        self.color = color
     
-    def get_triangle(self,height):
+    def get_triangle(self,height=20):
 
         dir_rad = math.radians(self.dir)
         x = self.x + height * math.cos(dir_rad)
