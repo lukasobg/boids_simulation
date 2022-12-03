@@ -9,10 +9,16 @@ class Flock:
         self.boids = boids
         self.color = color
     
+    def __str__(self):
+        ret = "Flock:\n"
+        ret += f" - boids: {len(self.boids)}\n"
+        ret += f" - color: {self.color}\n"
+        return ret
+    
     def random_flock(self,size):
         for i in range(size):
             self.add_boid()
-            self.color = rand.choice(COLORS)
+        self.color = rand.choice(COLORS)
     
     def add_boid(self):
         x = rand.randint(0,WIDTH)
@@ -27,3 +33,7 @@ class Flock:
     def set_color(self,color):
         for boid in self.boids:
             boid.color = color
+    
+    def clear(self):
+        self.boids = []
+    
