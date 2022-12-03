@@ -2,6 +2,7 @@ from flock import Flock
 from wall import Wall
 from colors import *
 import math
+import random as rand
 
 class Universe:
     def __init__(self,width,height,flocks=[],walls=[]):
@@ -58,3 +59,48 @@ class Universe:
         for flock in self.flocks:
             flock.clear()
         self.flocks = []
+    
+    def update(self,SPEED):
+
+        # Draw flocks
+        for flock in self.flocks:
+
+            for boid in flock.boids:
+
+                dir = boid.dir
+
+                # Random dir
+                rdir = dir + rand.randint(-4,4)
+
+                # Align boid
+                adir = boid.align(dir,flock)
+
+                # Cohese boid
+                cdir = boid.cohesion(dir,flock)
+
+                # Separate boid
+                sdir = boid.separate(dir,flock)
+
+                # Avoid walls
+                odir = rdir
+                if self.walls:
+                    odir = boid.avoid(dir,self.walls)
+
+                # Total direction
+                rand_weight = 25
+                a_weight = 1
+                c_weight = 1
+                s_weight = 1
+                o_weigt = 10
+                sum_weigths = rand_weight+a_weight+c_weight+s_weight+o_weigt
+
+                tot_dir = rand_weight*rdir+a_weight*adir+c_weight*cdir+s_weight*sdir+o_weigt*odir
+                tot_dir /= sum_weigths
+                tot_dir %= 360
+
+                # TODO: better way to deal with noise (only draw?)
+                # if noise_off:
+                #     tot_dir = (tot_dir+dir)/2
+
+                # Move boid
+                boid.move_in_dir(tot_dir,SPEED)

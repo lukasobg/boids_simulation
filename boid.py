@@ -132,21 +132,21 @@ class Boid:
 
                 a_force = 1 - dist_to/RADIUS
 
-                print("START")
-                print(init_dir)
-                print(dir_to)
+                # print("START")
+                # print(init_dir)
+                # print(dir_to)
 
                 a_dir = 0
                 if init_dir > dir_to:
                     a_dir = init_dir + a_force*90
-                    print("RIGHT")
-                    print(init_dir)
-                    print(a_dir)
+                    # print("RIGHT")
+                    # print(init_dir)
+                    # print(a_dir)
                 else:
                     a_dir = init_dir - a_force*90
-                    print("LEFT")
-                    print(init_dir)
-                    print(a_dir)
+                    # print("LEFT")
+                    # print(init_dir)
+                    # print(a_dir)
 
                 dir += a_dir
                 nowalls += 1

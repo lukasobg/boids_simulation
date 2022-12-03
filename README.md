@@ -8,6 +8,7 @@ Work in progress.
   - [x] Add obstacle avoidance
   - [x] Walls have margins
   - [ ] Fix obstacle avoidance only turning right
+  - [ ] Remove walls on click
 
 - [ ] Correct flocking behavious
 
