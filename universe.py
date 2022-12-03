@@ -1,5 +1,4 @@
 from flock import Flock
-import random as rand
 from colors import *
 
 class Universe:
@@ -8,9 +7,9 @@ class Universe:
         self.height = height
         self.flocks = flocks
 
-    def add_flock(self,size=10):
+    def add_random_flock(self,size,color):
         flock = Flock()
-        flock.random_flock(size)
+        flock.random_flock(size,color)
         self.flocks.append(flock)
     
     def clear(self):

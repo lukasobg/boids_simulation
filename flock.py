@@ -5,20 +5,25 @@ from colors import *
 WIDTH, HEIGHT = 1400, 900
 
 class Flock:
-    def __init__(self,boids=[],color=RED):
+    def __init__(self,name="",boids=[],color=RED):
+        self.name = name
         self.boids = boids
         self.color = color
     
     def __str__(self):
-        ret = "Flock:\n"
+        ret = f"Flock: {self.name}\n"
         ret += f" - boids: {len(self.boids)}\n"
         ret += f" - color: {self.color}\n"
         return ret
     
-    def random_flock(self,size):
+    def random_flock(self,size,color):
+        self.color = color
+
+        # TODO: why is this needed???
+        self.boids = []
+
         for i in range(size):
             self.add_boid()
-        self.color = rand.choice(COLORS)
     
     def add_boid(self):
         x = rand.randint(0,WIDTH)

@@ -63,7 +63,7 @@ class Boid:
         dir = math.atan2(dir_y,dir_x)
         return dir
 
-    def align(self,flock):
+    def align(self,init_dir,flock):
         RADIUS = 50
         neighbours = 0
         dir = 0
@@ -74,14 +74,19 @@ class Boid:
                 dir += n_boid.dir
                 neighbours += 1
             
-            if neighbours != 0:
-                self.dir /= neighbours
+        if neighbours != 0:
+            dir = dir/neighbours
+        else:
+            dir = init_dir
+        
+        return dir
     
-    def cohesion(self,flock):
+    def cohesion(self,init_dir,flock):
         RADIUS = 50
         neighbours = 0
         x = 0
         y = 0
+        dir = init_dir
         for n_boid in flock.boids:
             xn,yn = n_boid.x,n_boid.y
             dist_to = self.dist_to(xn,yn)
@@ -90,7 +95,27 @@ class Boid:
                 y += n_boid.y
                 neighbours += 1
             
-            if neighbours != 0:
-                x /= neighbours
-                y /= neighbours
-                self.dir = self.dir_to(x,y)
+        if neighbours != 0:
+            x /= neighbours
+            y /= neighbours
+            self.dir = self.dir_to(x,y)
+        
+        return dir
+
+    def separate(self,init_dir,flock):
+        RADIUS = 50
+        neighbours = 0
+        dir = 0
+        for n_boid in flock.boids:
+            xn,yn = n_boid.x,n_boid.y
+            dist_to = self.dist_to(xn,yn)
+            if dist_to < RADIUS and dist_to != 0:
+                dir += n_boid.dir
+                neighbours += 1
+            
+        if neighbours != 0:
+            dir = dir/neighbours
+        else:
+            dir = init_dir
+
+        return dir
