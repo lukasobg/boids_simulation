@@ -1,5 +1,7 @@
 # Boids simulation with pygame
 
+Work in progress.
+
 ## Todo
 
 - [x] Add walls
