@@ -119,3 +119,41 @@ class Boid:
             dir = init_dir
 
         return dir
+
+    def avoid(self,init_dir,walls):
+        RADIUS = 100
+        dir = 0
+        nowalls = 0
+        for wall in walls:
+            xw,yw = wall.x, wall.y
+            dist_to = self.dist_to(xw,yw)
+            if dist_to < RADIUS:
+                dir_to = self.dir_to(xw,yw)
+
+                a_force = 1 - dist_to/RADIUS
+
+                print("START")
+                print(init_dir)
+                print(dir_to)
+
+                a_dir = 0
+                if init_dir > dir_to:
+                    a_dir = init_dir + a_force*90
+                    print("RIGHT")
+                    print(init_dir)
+                    print(a_dir)
+                else:
+                    a_dir = init_dir - a_force*90
+                    print("LEFT")
+                    print(init_dir)
+                    print(a_dir)
+
+                dir += a_dir
+                nowalls += 1
+        
+        if nowalls == 0:
+            dir =init_dir
+        else:
+            dir = dir/nowalls
+            
+        return dir
