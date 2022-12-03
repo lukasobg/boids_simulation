@@ -33,7 +33,7 @@ def draw_window(universe,noise_off):
             sdir = boid.separate(dir,flock)
 
             # Total direction
-            rand_weight = 3
+            rand_weight = 25
             a_weight = 1
             c_weight = 1
             s_weight = 1
@@ -50,7 +50,7 @@ def draw_window(universe,noise_off):
             boid.move_in_dir(tot_dir,SPEED)
 
             # Draw triangle
-            tri_boid = boid.get_triangle(40)
+            tri_boid = boid.get_triangle(25)
             pygame.draw.polygon(
                 surface=WIN, color=boid.color,
                 points=tri_boid)
@@ -61,7 +61,7 @@ def main():
 
     # Boid stuff
     universe = Universe(WIDTH,HEIGHT)
-    universe.add_random_flock(8,GREEN)
+    universe.add_random_flock(40,LIME)
     # universe.add_random_flock(10,RED)
     # universe.add_random_flock(10,BLUE)
 
