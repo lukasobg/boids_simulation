@@ -1,5 +1,7 @@
 # Boids simulation with pygame
 
+![screenshot of program](boids.png)
+
 Work in progress.
 
 ## Todo
@@ -15,13 +17,14 @@ Work in progress.
 - [ ] Correct noise on/off
 - [ ] Investigate Flock.boids
 
-- [ ] Add keyboard shortcuts
+- [ ] Add keyboard shortcuts / mouse clicks
   - [x] Play/pause
   - [ ] Click to add boid
   - [x] Right click for wall
   - [ ] Clear universe
   - [ ] Reset to random universe
   - [ ] Noise on/off
+  - [x] Add boids on mouse click
 
 - [ ] Add GUI buttons/sliders
   - [ ] Clear universe
