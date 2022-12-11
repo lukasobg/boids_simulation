@@ -1,6 +1,6 @@
 # Boids simulation with pygame
 
-![screenshot of program](boids.png)
+![screenshot of program](boids_new.png)
 
 Work in progress.
 
